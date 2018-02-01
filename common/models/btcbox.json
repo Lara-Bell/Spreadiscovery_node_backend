@@ -1,0 +1,99 @@
+{
+  "name": "Btcbox",
+  "plural": "btcboxs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "symbol": {
+      "type": "string",
+      "required": true
+    },
+    "datetime": {
+      "type": "date",
+      "required": true
+    },
+    "high": {
+      "type": "number",
+      "required": true
+    },
+    "low": {
+      "type": "number",
+      "required": true
+    },
+    "bid": {
+      "type": "number",
+      "required": true
+    },
+    "ask": {
+      "type": "number",
+      "required": true
+    },
+    "last": {
+      "type": "number",
+      "required": true
+    },
+    "baseVolume": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "ticker": {
+      "returns": [
+        {
+          "arg": "Btcbox",
+          "type": "object",
+          "root": false,
+          "description": "this is the response to the say my name thing"
+        }
+      ],
+      "description": "this one takes in a name and then says it",
+      "http": [
+        {
+          "path": "/ticker",
+          "verb": "get"
+        }
+      ]
+    },
+    "tickers": {
+      "returns": [
+        {
+          "arg": "Btcbox",
+          "type": "object",
+          "root": false,
+          "description": "this is the response to the say my name thing"
+        }
+      ],
+      "description": "this one takes in a name and then says it",
+      "http": [
+        {
+          "path": "/tickers",
+          "verb": "get"
+        }
+      ]
+    },
+    "destroyFunc": {
+      "returns": [
+        {
+          "arg": "Btcbox",
+          "type": "object",
+          "root": false,
+          "description": "this is the response to the say my name thing"
+        }
+      ],
+      "description": "this one takes in a name and then says it",
+      "http": [
+        {
+          "path": "/destroyFunc",
+          "verb": "delete"
+        }
+      ]
+    }
+  }
+}
