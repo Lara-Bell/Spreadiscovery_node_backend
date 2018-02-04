@@ -8,6 +8,10 @@ module.exports = function(Quoinex) {
       callback(null, ticker);
     });
   }
+  Quoinex.remoteMethod('ticker',{
+    returns: {arg: 'Quoinex', type: 'object'},
+    http: {path: '/ticker', verb: 'get'}
+  });
 
   Quoinex.tickers = function(callback) {
     Quoinex.find({
@@ -17,23 +21,28 @@ module.exports = function(Quoinex) {
       callback(null, tickers);
     });
   }
+  Quoinex.remoteMethod('tickers',{
+    returns: {arg: 'Quoinex', type: 'object'},
+    http: {path: '/tickers', verb: 'get'}
+  });
 
-  Quoinex.destroyFunc = function(callback) {
+  Quoinex.deleteTickers = function(callback) {
     Quoinex.count((err, tickers) => {
       const deleteNum = tickers - limitNum; //3794 - 600 = 3194 => ticker {}
       Quoinex.find({
         order: 'datetime ASC',
         }, (err, models) => {
           const deleteNumTicker = models[deleteNum];
-          // console.log(deleteNumTicker.datetime);
-          // callback(null, deleteNumTicker);
           Quoinex.destroyAll({
             datetime: {lt: deleteNumTicker.datetime}
           }, function(err, obj, num) {
-            // console.log(deleteNumTicker.datetime);
             callback(null, obj);
         });
       });
     });
   }
+  Quoinex.remoteMethod('deleteTickers',{
+    returns: {arg: 'Quoinex', type: 'object'},
+    http: {path: '/deleteTickers', verb: 'delete'}
+  });
 };

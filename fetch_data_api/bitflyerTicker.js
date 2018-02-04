@@ -1,6 +1,5 @@
-const config = require('./config');
 const ccxt = require('ccxt');
-const axios = require('axios');
+const axios = require('./axios');
 
 let getExchangeTicker = {
   symbol: "BTC/JPY",
@@ -15,12 +14,9 @@ let getExchangeTicker = {
       last: ticker.last,
       baseVolume: ticker.baseVolume
     };
-    await axios.post(`${config.END_POINT}/bitflyers`, ticker)
-      .then(function (response) {
-        console.log(response.data);
-      }).catch(function (error) {
-        console.log(error);
-      });
+    await axios.post(`/bitflyers`, ticker)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 }
 

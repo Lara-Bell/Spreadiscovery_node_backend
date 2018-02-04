@@ -8,6 +8,10 @@ module.exports = function(Coincheck) {
       callback(null, ticker);
     });
   }
+  Coincheck.remoteMethod('ticker',{
+    returns: {arg: 'Coincheck', type: 'object'},
+    http: {path: '/ticker', verb: 'get'}
+  });
 
   Coincheck.tickers = function(callback) {
     Coincheck.find({
@@ -17,8 +21,12 @@ module.exports = function(Coincheck) {
       callback(null, tickers);
     });
   }
+  Coincheck.remoteMethod('tickers',{
+    returns: {arg: 'Coincheck', type: 'object'},
+    http: {path: '/tickers', verb: 'get'}
+  });
 
-  Coincheck.destroyFunc = function(callback) {
+  Coincheck.deleteTickers = function(callback) {
     Coincheck.count((err, tickers) => {
       const deleteNum = tickers - limitNum; //3794 - 600 = 3194 => ticker {}
       Coincheck.find({
@@ -36,4 +44,9 @@ module.exports = function(Coincheck) {
       });
     });
   }
+
+  Coincheck.remoteMethod('deleteTickers',{
+    returns: {arg: 'Coincheck', type: 'object'},
+    http: {path: '/deleteTickers', verb: 'delete'}
+  });
 };

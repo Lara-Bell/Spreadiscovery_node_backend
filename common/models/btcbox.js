@@ -8,6 +8,10 @@ module.exports = function(Btcbox) {
       callback(null, ticker);
     });
   }
+  Btcbox.remoteMethod('ticker',{
+    returns: {arg: 'Btcbox', type: 'object'},
+    http: {path: '/ticker', verb: 'get'}
+  });
 
   Btcbox.tickers = function(callback) {
     Btcbox.find({
@@ -17,22 +21,28 @@ module.exports = function(Btcbox) {
       callback(null, tickers);
     });
   }
-  Btcbox.destroyFunc = function(callback) {
+  Btcbox.remoteMethod('tickers',{
+    returns: {arg: 'Btcbox', type: 'object'},
+    http: {path: '/tickers', verb: 'get'}
+  });
+
+  Btcbox.deleteTickers = function(callback) {
     Btcbox.count((err, tickers) => {
-      const deleteNum = tickers - limitNum; //3794 - 600 = 3194 => ticker {}
+      const deleteNum = tickers - limitNum;
       Btcbox.find({
         order: 'datetime ASC',
         }, (err, models) => {
           const deleteNumTicker = models[deleteNum];
-          // console.log(deleteNumTicker.datetime);
-          // callback(null, deleteNumTicker);
           Btcbox.destroyAll({
             datetime: {lt: deleteNumTicker.datetime}
           }, function(err, obj, num) {
-            // console.log(deleteNumTicker.datetime);
             callback(null, obj);
         });
       });
     });
   }
+  Btcbox.remoteMethod('deleteTickers',{
+    returns: {arg: 'Btcbox', type: 'object'},
+    http: {path: '/deleteTickers', verb: 'delete'}
+  });
 };

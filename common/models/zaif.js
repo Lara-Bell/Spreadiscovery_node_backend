@@ -8,6 +8,10 @@ module.exports = function(Zaif) {
       callback(null, ticker);
     });
   }
+  Zaif.remoteMethod('ticker',{
+    returns: {arg: 'Zaif', type: 'object'},
+    http: {path: '/ticker', verb: 'get'}
+  });
 
   Zaif.tickers = function(callback) {
     Zaif.find({
@@ -17,23 +21,28 @@ module.exports = function(Zaif) {
       callback(null, tickers);
     });
   }
+  Zaif.remoteMethod('tickers',{
+    returns: {arg: 'Zaif', type: 'object'},
+    http: {path: '/tickers', verb: 'get'}
+  });
 
-  Zaif.destroyFunc = function(callback) {
+  Zaif.deleteTickers = function(callback) {
     Zaif.count((err, tickers) => {
       const deleteNum = tickers - limitNum; //3794 - 600 = 3194 => ticker {}
       Zaif.find({
         order: 'datetime ASC',
         }, (err, models) => {
           const deleteNumTicker = models[deleteNum];
-          // console.log(deleteNumTicker.datetime);
-          // callback(null, deleteNumTicker);
           Zaif.destroyAll({
             datetime: {lt: deleteNumTicker.datetime}
           }, function(err, obj, num) {
-            // console.log(deleteNumTicker.datetime);
             callback(null, obj);
         });
       });
     });
   }
+  Zaif.remoteMethod('deleteTickers',{
+    returns: {arg: 'Zaif', type: 'object'},
+    http: {path: '/deleteTickers', verb: 'delete'}
+  });
 };

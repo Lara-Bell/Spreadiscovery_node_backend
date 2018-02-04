@@ -48,59 +48,34 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "ticker"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "tickers"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "deleteTickers"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
     }
   ],
-  "methods": {
-    "ticker": {
-      "returns": [
-        {
-          "arg": "Quoinex",
-          "type": "object",
-          "root": false,
-          "description": "this is the response to the say my name thing"
-        }
-      ],
-      "description": "this one takes in a name and then says it",
-      "http": [
-        {
-          "path": "/ticker",
-          "verb": "get"
-        }
-      ]
-    },
-    "tickers": {
-      "returns": [
-        {
-          "arg": "Quoinex",
-          "type": "object",
-          "root": false,
-          "description": "this is the response to the say my name thing"
-        }
-      ],
-      "description": "this one takes in a name and then says it",
-      "http": [
-        {
-          "path": "/tickers",
-          "verb": "get"
-        }
-      ]
-    },
-    "destroyFunc": {
-      "returns": [
-        {
-          "arg": "Quoinex",
-          "type": "object",
-          "root": false,
-          "description": "this is the response to the say my name thing"
-        }
-      ],
-      "description": "this one takes in a name and then says it",
-      "http": [
-        {
-          "path": "/destroyFunc",
-          "verb": "delete"
-        }
-      ]
-    }
-  }
+  "methods": {}
 }

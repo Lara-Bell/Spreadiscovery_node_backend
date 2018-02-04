@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axios from './axios';
+
 import moment from 'moment';
 import './App.css';
 
@@ -11,7 +12,6 @@ import ExchangeTable from './components/exchangeTable';
 import FooterNav from './components/footerNav';
 
 import Spinner from './UI/Spinner';
-
 
 class App extends Component {
   constructor(props){
@@ -27,6 +27,7 @@ class App extends Component {
       // error: null,
       // isLoaded: false
     }
+    console.log(process.env);
     // console.log('[App] constructor', this.state);
   }
 
@@ -57,7 +58,7 @@ class App extends Component {
 
   fetchDataTickers = (brokers, Broker) => {
     this.brokers = brokers;
-    axios.get(`http://localhost:4000/api/${brokers}/tickers`)
+    axios.get(`/${brokers}/tickers`)
       .then(res => {
         let exchanges = [];
         exchanges[brokers] = res.data[Broker].map(fetchData => {

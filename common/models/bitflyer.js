@@ -8,6 +8,10 @@ module.exports = function(Bitflyer) {
       callback(null, ticker);
     });
   }
+  Bitflyer.remoteMethod('ticker',{
+    returns: {arg: 'Bitflyer', type: 'object'},
+    http: {path: '/ticker', verb: 'get'}
+  });
 
   Bitflyer.tickers = function(callback) {
     Bitflyer.find({
@@ -17,8 +21,12 @@ module.exports = function(Bitflyer) {
       callback(null, tickers);
     });
   }
+  Bitflyer.remoteMethod('tickers',{
+    returns: {arg: 'Bitflyer', type: 'object'},
+    http: {path: '/tickers', verb: 'get'}
+  });
 
-  Bitflyer.destroyFunc = function(callback) {
+  Bitflyer.deleteTickers = function(callback) {
     Bitflyer.count((err, tickers) => {
       const deleteNum = tickers - limitNum; //3794 - 600 = 3194 => ticker {}
       Bitflyer.find({
@@ -36,4 +44,8 @@ module.exports = function(Bitflyer) {
       });
     });
   }
+  Bitflyer.remoteMethod('deleteTickers',{
+    returns: {arg: 'Bitflyer', type: 'object'},
+    http: {path: '/deleteTickers', verb: 'delete'}
+  });
 };

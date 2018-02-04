@@ -4,10 +4,14 @@ module.exports = function(Bitbank) {
   const limitNum = 600;
 
   Bitbank.ticker = function(callback) {
-    Bitbank.findOne({order: 'datetime DESC'}, function(err, model){
-      callback(null, model);
+    Bitbank.findOne({order: 'datetime DESC'}, function(err, ticker){
+      callback(null, ticker);
     });
   }
+  Bitbank.remoteMethod('ticker',{
+    returns: {arg: 'Bitbank', type: 'object'},
+    http: {path: '/ticker', verb: 'get'}
+  });
 
   Bitbank.tickers = function(callback) {
     Bitbank.find({
@@ -17,23 +21,29 @@ module.exports = function(Bitbank) {
       callback(null, tickers);
     });
   }
+  Bitbank.remoteMethod('tickers',{
+    returns: {arg: 'Bitbank', type: 'object'},
+    http: {path: '/tickers', verb: 'get'}
+  });
 
-  Bitbank.destroyFunc = function(callback) {
+  Bitbank.deleteTickers = function(callback) {
     Bitbank.count((err, tickers) => {
-      const deleteNum = tickers - limitNum; //3794 - 600 = 3194 => ticker {}
+      const deleteNum = tickers - limitNum;
       Bitbank.find({
         order: 'datetime ASC',
         }, (err, models) => {
           const deleteNumTicker = models[deleteNum];
-          // console.log(deleteNumTicker.datetime);
-          // callback(null, deleteNumTicker);
           Bitbank.destroyAll({
             datetime: {lt: deleteNumTicker.datetime}
           }, function(err, obj, num) {
-            // console.log(deleteNumTicker.datetime);
             callback(null, obj);
         });
       });
     });
   }
+  Bitbank.remoteMethod('deleteTickers',{
+    returns: {arg: 'Bitbank', type: 'object'},
+    http: {path: '/deleteTickers', verb: 'delete'}
+  });
+
 };
