@@ -14,7 +14,8 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
@@ -56,6 +57,10 @@
     "public": true
   },
   "Bitbank": {
+    "dataSource": "db",
+    "public": true
+  },
+  "backenduser": {
     "dataSource": "db",
     "public": true
   }
