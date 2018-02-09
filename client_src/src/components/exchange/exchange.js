@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import axios from './axios';
+import axios from '../../axios';
 
 import moment from 'moment';
-import './App.css';
+// import './App.css';
 
-import HeaderNav from './components/headerNav';
-import ExchangeChart from './components/exchangeChart';
-import ExchangeSpreadMessage from './components/exchangeSpreadMessage';
-import ExchangesSpreadBarChart from './components/exchangeSpreadBarChart';
-import ExchangeTable from './components/exchangeTable';
-import FooterNav from './components/footerNav';
+// import HeaderNav from './components/headerNav';
+import ExchangeChart from './exchangeChart';
+import ExchangeSpreadMessage from './exchangeSpreadMessage';
+import ExchangesSpreadBarChart from './exchangeSpreadBarChart';
+import ExchangeTable from './exchangeTable';
+// import FooterNav from './components/footerNav';
 
-import Spinner from './UI/Spinner';
+import Spinner from '../../UI/Spinner';
 
-class App extends Component {
+class Exchange extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -81,8 +81,7 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <HeaderNav />
+      <div id="exchange">
         <ExchangeChart
           bitflyers={bitflyers}
           coinchecks={coinchecks}
@@ -115,10 +114,9 @@ class App extends Component {
           btcbox={btcboxs[0]}
           bitbank={bitbanks[0]}
         />
-        <FooterNav />
       </div>
     );
   }
 }
 
-export default App;
+export default Exchange;

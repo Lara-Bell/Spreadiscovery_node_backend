@@ -57,7 +57,7 @@ class exchangesSpreadBarChart extends Component {
     // console.log('[ExchangesSpreadBarChart] render', this.state);
 
   	return (
-      <div className="container mt-5">
+      <div id="exchange-spread-bar-chart" className="container mt-5">
         <h2>Exchange Spreads</h2>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart width={1140} height={300} data={exchanges}

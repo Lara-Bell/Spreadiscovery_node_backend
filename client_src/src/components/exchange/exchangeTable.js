@@ -85,7 +85,7 @@ class ExchangeTable extends Component {
     // console.log('[ExchangeTable] render', this.state, this.props);
     const { column, exchanges, direction } = this.state;
     return (
-      <div className="container mt-5">
+      <div id="exchange-table" className="container mt-5">
         <h2>Exchanges Detail</h2>
         <Table sortable fixed striped>
           <Table.Header>

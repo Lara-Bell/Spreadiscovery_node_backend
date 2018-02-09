@@ -109,7 +109,7 @@ class ExchangeSpreadMessage extends Component {
     const { items } = this.state;
     // console.log('[ExchangeSpreadMessage] render', this.state);
     return (
-      <div id="top-spreads" className="container mt-5">
+      <div id="exchange-spread-message" className="container mt-5">
         <h2>Top Spreads</h2>
         <Card.Group itemsPerRow={2}>
           <Card>

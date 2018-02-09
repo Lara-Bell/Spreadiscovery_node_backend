@@ -87,7 +87,7 @@ class ExchangeChart extends Component {
 
     // console.log('[ExchangeChart] render', this.state);
     return(
-      <div className="container">
+      <div id="exchange-chart" className="container">
         <h2 className="mt-5">Exchanges Chart</h2>
         <ResponsiveContainer width="100%" height={480}>
           <LineChart width={1140} height={480} data={data}
