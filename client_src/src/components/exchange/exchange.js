@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import axios from '../../axios';
-
 import moment from 'moment';
-// import './App.css';
 
-// import HeaderNav from './components/headerNav';
 import ExchangeChart from './exchangeChart';
 import ExchangeSpreadMessage from './exchangeSpreadMessage';
 import ExchangesSpreadBarChart from './exchangeSpreadBarChart';
 import ExchangeTable from './exchangeTable';
-// import FooterNav from './components/footerNav';
 
 import Spinner from '../../UI/Spinner';
 
@@ -23,10 +19,8 @@ class Exchange extends Component {
       zaifs: [],
       btcboxs: [],
       bitbanks: [],
-      // error: null,
-      // isLoaded: false
     }
-    console.log(process.env);
+    // console.log(process.env);
     // console.log('[App] constructor', this.state);
   }
 
@@ -37,7 +31,7 @@ class Exchange extends Component {
   }
 
   componentDidMount(){
-    // this.appComponent = setInterval( () => this.allExchangeTicker(), 30000);
+    this.appComponent = setInterval( () => this.allExchangeTicker(), 30000);
     // console.log('[App] componentDidMount', this.state);
   }
 
