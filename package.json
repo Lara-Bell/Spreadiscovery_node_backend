@@ -1,5 +1,5 @@
 {
-  "name": "coinBack",
+  "name": "spreadiscovery_backend",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
@@ -11,8 +11,6 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
-    "axios": "^0.17.1",
-    "ccxt": "^1.10.967",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "dotenv": "^4.0.0",
