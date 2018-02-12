@@ -5,6 +5,8 @@ module.exports = {
   // restApiRoot: '/api' + (version > 0 ? '/v' + version : ''),
   // https://api.localhost.com/v1
   // restApiRoot: (version > 0 ? '/v' + version : ''),
+  // https://api.localhost.com/1
+  // restApiRoot: (version > 0 ? '/' + version : ''),
   host: process.env.HOST || 'localhost',
   port: process.env.PORT || 4000
 };
