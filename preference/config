@@ -1,0 +1,23 @@
+use admin
+db.createUser(
+  {
+    user: "***REMOVED***",
+    pwd: "***REMOVED***",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+解除済み
+
+{
+  "email": "***REMOVED***",
+  "password": "***REMOVED***"
+}
+
+{
+  "id": "***REMOVED***",
+  "ttl": 1209600,
+  "created": "***REMOVED***",
+  "userId": "***REMOVED***"
+}
+
+pm2 start npm --name "BackEnd" -- run  build
