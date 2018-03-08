@@ -4,4 +4,15 @@
 // License text available at https://opensource.org/licenses/MIT
 
 // Use the same environment-based configuration as in staging
-module.exports = require('./datasources.staging.js');
+require('dotenv').config()
+
+module.exports = {
+  db: {
+    connector: 'mongodb',
+    hostname: process.env.MONGODB_HOST || '127.0.0.1',
+    port: process.env.MONGODB_PORT || 27017,
+    user: process.env.MONGODB_USER,
+    password: process.env.MONGODB_PASS,
+    database: process.env.MONGODB_NAME,
+  }
+}

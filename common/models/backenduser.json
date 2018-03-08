@@ -12,10 +12,9 @@
     {
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY",
+      "permission": "ALLOW",
       "property": "create"
-    },
-    {
+    }, {
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW",

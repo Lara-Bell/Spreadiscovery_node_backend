@@ -1,0 +1,23 @@
+use admin
+db.createUser(
+  {
+    user: "Larabell",
+    pwd: "rs6nkJZpdfKZnKAUNgZeFwHJpjEzrX",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+解除済み
+
+{
+  "email": "www.lara.bell@gmail.com",
+  "password": "buFXMXMMpNWYp6qPgxRpWmVmwdTZPG"
+}
+
+{
+  "id": "sgARGZeaFFd6EIJdJSjTcklzQMgyi2zCmBDyiI5d7L3aRoqKqlaBf7cZRN5wlDOX",
+  "ttl": 1209600,
+  "created": "2018-02-20T00:37:44.784Z",
+  "userId": "5a8b6dca311569134426fa11"
+}
+
+pm2 start npm --name "BackEnd" -- run  build
